@@ -4,3 +4,23 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+
+  - package-ecosystem: docker
+    directory: /.ci/ogc
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /.docker/qgis_resources
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /resources/server/src/landingpage
+    schedule:
+      interval: daily
