@@ -21,11 +21,6 @@ jobs:
     name: Write comment to ping author about the pull request description
     steps:
 
-      - name: Harden Runner
-        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
-        with:
-          egress-policy: audit
-
       - name: Create comment about documentation
         if: github.event.label.name == 'Needs Documentation'
         uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3.1.0
@@ -85,11 +80,6 @@ jobs:
     steps:
 
       # transform the milestone (e.g. 3.10.4) to a doc label (3.10)
-      - name: Harden Runner
-        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
-        with:
-          egress-policy: audit
-
       - name: QGIS milestone to Doc label
         id: milestone2label
         env:
