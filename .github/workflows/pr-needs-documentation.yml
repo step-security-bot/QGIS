@@ -23,7 +23,7 @@ jobs:
 
       - name: Create comment about documentation
         if: github.event.label.name == 'Needs Documentation'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3.1.0
         with:
           token: ${{ secrets.GH_TOKEN_BOT }}
           issue-number: ${{ github.event.pull_request.number }}
@@ -41,7 +41,7 @@ jobs:
 
       - name: Create comment about changelog
         if: github.event.label.name == 'Changelog'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3.1.0
         with:
           token: ${{ secrets.GH_TOKEN_BOT }}
           issue-number: ${{ github.event.pull_request.number }}
@@ -93,7 +93,7 @@ jobs:
       # get the PR body
       - name: Get PR body as JSON
         id: get_pr_info
-        uses: octokit/request-action@v2.x
+        uses: octokit/request-action@ce564d5a5eb207c7f4cb601ac32c7a951e9b6396 # v2.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -103,14 +103,14 @@ jobs:
       # extract body from json output
       - name: Get PR body as text
         id: get_pr_body
-        uses: gr2m/get-json-paths-action@v1.x
+        uses: gr2m/get-json-paths-action@0970b3763cf0e5c030517f5adb212a26c213f504 # v1.x
         with:
           json: ${{ steps.get_pr_info.outputs.data }}
           body: "body"
 
       # get commits from the PR
       - name: Get PR commits
-        uses: octokit/request-action@v2.x
+        uses: octokit/request-action@ce564d5a5eb207c7f4cb601ac32c7a951e9b6396 # v2.x
         id: get_pr_commits
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -130,7 +130,7 @@ jobs:
       # create the documentation issue
       - name: Create Documentation issue
         id: doc_issue
-        uses: maxkomarychev/oction-create-issue@v0.7.1
+        uses: maxkomarychev/oction-create-issue@a5b6162a3aa4c1b429c87423d008d30a3c7a8a17 # v0.7.1
         with:
           token: ${{ secrets.GH_TOKEN_BOT }}
           owner: qgis
@@ -155,7 +155,7 @@ jobs:
 
       # write comment to ping the PR author
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}

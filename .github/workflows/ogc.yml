@@ -38,10 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Prepare build cache for pull request
-        uses: pat-s/always-upload-cache@v3.0.11
+        uses: pat-s/always-upload-cache@9a0d1c3e1a8260b05500f9b67a5be8f2a1299819 # v3.0.11
         if: github.event_name == 'pull_request'
         with:
           path: /home/runner/QGIS/.ccache
@@ -55,7 +55,7 @@ jobs:
 
       - name: Prepare build cache for branch/tag
         # use a fork of actions/cache@v2 to upload cache even when the build or test failed
-        uses: pat-s/always-upload-cache@v3.0.11
+        uses: pat-s/always-upload-cache@9a0d1c3e1a8260b05500f9b67a5be8f2a1299819 # v3.0.11
         if: github.event_name != 'pull_request'
         with:
           path: /home/runner/QGIS/.ccache
@@ -67,7 +67,7 @@ jobs:
 
       - name: Build Docker Container with Build Environment
         id: docker-build
-        uses: whoan/docker-build-with-cache-action@v8
+        uses: whoan/docker-build-with-cache-action@272668ad2d5539177fb43c97b5e6a7df446933c4 # v8.0.2
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
