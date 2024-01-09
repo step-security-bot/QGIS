@@ -14,6 +14,11 @@ jobs:
     if: github.repository == 'qgis/QGIS'
     steps:
       # list the tags and milestones
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: octokit/graphql-action@a5b8ca2d995449cd9b1e8508d36039fb80bf6140 # v2.x
         id: graphql_request
         with:
