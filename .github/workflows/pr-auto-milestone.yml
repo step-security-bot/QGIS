@@ -14,7 +14,7 @@ jobs:
     if: github.repository == 'qgis/QGIS'
     steps:
       # list the tags and milestones
-      - uses: octokit/graphql-action@v2.x
+      - uses: octokit/graphql-action@a5b8ca2d995449cd9b1e8508d36039fb80bf6140 # v2.x
         id: graphql_request
         with:
           query: |
@@ -110,7 +110,7 @@ jobs:
       - name: Create milestone if needed
         id: create_milestone
         if: steps.extract_data.outputs.has_milestone_to_set == 1 && steps.extract_data.outputs.has_milestone_to_create == 1
-        uses: octokit/request-action@v2.x
+        uses: octokit/request-action@ce564d5a5eb207c7f4cb601ac32c7a951e9b6396 # v2.x
         with:
           route: POST /repos/qgis/QGIS/milestones
           title: ${{ steps.extract_data.outputs.milestone_title }}
@@ -132,7 +132,7 @@ jobs:
       # update PR with milestone
       - name: update PR milestone
         if: steps.extract_data.outputs.has_milestone_to_set == 1
-        uses: octokit/request-action@v2.x
+        uses: octokit/request-action@ce564d5a5eb207c7f4cb601ac32c7a951e9b6396 # v2.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
