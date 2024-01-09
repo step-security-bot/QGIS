@@ -1,4 +1,4 @@
-FROM ubuntu:latest@sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b
+FROM ubuntu:latest
 MAINTAINER Paul Blottiere <blottiere.paul@gmail.com>
 RUN  export DEBIAN_FRONTEND=noninteractive
 ENV  DEBIAN_FRONTEND noninteractive
